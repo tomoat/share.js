@@ -59,9 +59,23 @@
             douban      : 'http://shuo.douban.com/!service/share?href={{URL}}&name={{TITLE}}&text={{DESCRIPTION}}&image={{IMAGE}}&starid=0&aid=0&style=11',
             diandian    : 'http://www.diandian.com/share?lo={{URL}}&ti={{TITLE}}&type=link',
             linkedin    : 'http://www.linkedin.com/shareArticle?mini=true&ro=true&title={{TITLE}}&url={{URL}}&summary={{SUMMARY}}&source={{SOURCE}}&armin=armin',
-            facebook    : 'https://www.facebook.com/sharer/sharer.php?u={{URL}}',
+            facebook    : 'https://www.facebook.com/sharer/sharer.php?u={{URL}}&title={{TITLE}}&description={{DESCRIPTION}}&caption={{SUBHEAD}}&link={{URL}}&picture={{IMAGE}}',
             twitter     : 'https://twitter.com/intent/tweet?text={{TITLE}}&url={{URL}}&via={{SITE_URL}}',
             google      : 'https://plus.google.com/share?url={{URL}}'
+        };
+
+        var $ariaLabels = {
+            qzone: "QQ空间",
+            qq: "QQ",
+            tencent: "腾讯微博",
+            weibo: "微博",
+            wechat: "微信",
+            douban: "豆瓣",
+            diandian: "点点",
+            linkedin: "LinkedIn",
+            facebook: "Facebook",
+            twitter: "Twitter",
+            google: "Google"
         };
 
         this.each(function() {
@@ -103,6 +117,7 @@
                 if (!$link.length) {
                     return true;
                 }
+                $link.prop('aria-label', "分享到 "+$ariaLabels[$name]);
 
                 $link.prop('href', $url);
 
